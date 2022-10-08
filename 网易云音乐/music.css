@@ -1,0 +1,454 @@
+*{
+    margin: 0;
+    padding:0;
+    box-sizing: border-box;
+ }
+header{
+    max-width: 300px;
+    margin: 0 auto;
+    height:150px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+header ul { 
+    margin: 0 auto;
+    list-style: none; 
+    width: 9999px;/*如果width太小会怎样*/
+    animation: swiperRun 10s infinite 2s running;
+}
+/*为什么设置maxwidtth会出问题*/
+header li {
+    width: 300px;
+    height: 150px;
+    float: left;
+    
+}
+img {
+    width: 100%;
+    height: 100%;
+ }
+nav{position:relative ;
+    right: 20px;
+    margin: 0 auto;
+    height:100px;
+    background-color: rgb(250, 251, 252);
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    overflow-y: hidden;
+
+}
+/*为什么设置a而不是div*/
+nav a{
+    margin: 30px;
+}
+main{
+    margin: 0 auto;
+    background-color: rgb(243, 243, 239);
+    display: flex;
+    flex-direction: column;
+}
+ .circle {
+    width: 300px;
+    position: absolute;
+    margin:  0 auto;
+    right: 0 ;
+    left: 0;
+    bottom: 10px;
+}/*绘制圆形*/
+.circle div {
+    box-sizing: border-box;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 1px solid white;
+    float: left;
+    margin: 0 10px;
+
+    }
+    /* 鼠标滑过暂停播放 */
+.slide:hover ul,.slide:hover .active{
+    animation-play-state: paused;
+    cursor: pointer;
+}/*设置实心圆点*/
+.circle .active {
+    opacity: 1;
+    background-color: #FFF;
+    animation: circleRun 10s infinite 2s running;
+}
+/* 让图片动起来的动画 */
+@keyframes swiperRun {
+    /* 第一张 */ 
+    0% {
+        transform: translateX(0px);
+    }
+    /* 第二张 */ 
+    5% {
+        transform: translateX(-300px);
+    }
+    /*下面移动的幅度都为1024px*/
+    25% {
+        transform: translateX(-300px);
+    }
+    /* 第三张 */
+    30% {
+        transform: translateX(-600px);
+    }
+
+    50% {
+        transform: translateX(-600px);
+    }
+    /* 第四张 */
+    55% {
+        transform: translateX(-900px);
+    }
+
+    75% {
+        transform: translateX(-900px);
+    }
+    /* 第五张 */
+    80% {
+        transform: translateX(-1200px);
+    }
+
+    100% {
+        transform: translateX(-1200px);
+    }
+}
+
+/*让圆点动起来*/
+@keyframes circleRun {
+        /* 第一个点 */
+        0% {
+            transform: translateX(40px);
+            opacity: 1;
+        }
+        /* 第二个点 */
+        5% {
+            transform: translateX(80px);
+            opacity: 1;
+        }
+        25% {
+            transform: translateX(80px);
+            opacity: 1;
+        }
+        /* 第三个点 */
+        30% {
+            transform: translateX(120px);
+            opacity: 1;
+        }
+        50% {
+            transform: translateX(120px);
+            opacity: 1;
+        }
+        /* 第四个点 */
+        55% {
+            transform: translateX(160px);
+            opacity: 1;
+        }
+
+        75% {
+            transform: translateX(160px);
+            opacity: 1;
+        }
+        77% {
+            transform: translateX(39px);
+            opacity: 0;
+        }
+        /* 第五个点  移回去 */
+        80% {
+            transform: translateX(40px);
+            opacity: 1;
+        }
+        100% {
+            transform: translateX(40px);
+            opacity: 1;
+        }
+    }
+    /*下面设计内容*/
+    .recommendation{
+        position: relative;
+        top: 20px;
+    }
+    h1{ margin: 0;
+        height: 100px;
+        width: 200px;
+        text-align: center;
+        position: relative;
+        right: 20px;
+        bottom: 20px;
+    }
+    #find-more{  
+        width: 50px;
+        border: solid pink;
+        border-radius: 10px;
+        color: black;
+        background-color: antiquewhite;
+        position: absolute;
+        top: 0;/*如果设置为10而不是10px*/
+        right: 0;
+    }
+    div.container{
+        display: flex;
+        position: relative;
+        bottom: 60px;
+        justify-content: space-between;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        
+    }
+    article{
+        margin: 20px;
+        height: 170px;
+        width: 150px;
+        display: flex;
+        flex-direction: column;
+        
+    }
+    article img{
+        margin :0 auto;/*这句话有用吗*/
+        height:130px;
+        width: 150px;
+        border-radius: 10px;
+    }
+    /*播放器*/
+    .music{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position:fixed;
+        bottom: 0px;
+        right: 0;
+        opacity: 0;
+        z-index: 100;
+    
+    }
+    
+    .title {
+        font-weight: 400;
+        font-size: 1em;
+        color:coral;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+    
+    .player {
+        position: relative;
+        width: 250px;
+        height: 50px;
+        background:#fbfbfb;
+        border: 1px solid #fff;
+        border-radius: 0 40px 40px 0;
+        padding: 10px 15px;
+        box-shadow: -5px -5px 7.5px#fff,
+                    5px 5px 7.5px rgba(0,0,0,0.1),
+                    inset -2.5px -2.5px 7.5px #fff,
+                    inset 2.5px 2.5px 7.5px rgba(0,0,0,0.1) ;
+    }
+    
+    .btns {
+        /* position: relative; */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        /* background: red; */
+    
+    }
+    .btns div {
+        position: relative;
+        width: 40px;
+        height:40px;
+        bottom: 10px;
+        border-radius: 50%;
+        background: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #777;
+        cursor: pointer;
+        box-shadow: inset 0 -2.5px 2.5px rgba(0,0,0,0.1),
+                          0 2.5px 5px rgba(0,0,0,0.1),
+                          0 5px 7.5px rgba(0,0,0,0.1);
+    
+    }
+    .btns div:active
+     {
+        color:coral;
+        box-shadow: inset 0 -1px 2.5px rgba(0,0,0,0.15),
+                    inset 0 1px 2.5px rgba(0,0,0,0.15);
+    }
+    
+    .btns .playPause {
+        height: 50px;
+        width: 50px;
+    
+    }
+    .btns .material-icons {
+        font-size: 1em;
+    
+    }
+    .btns .playPause span {
+        font-size: 1.5em;
+    } 
+    @keyframes player{
+        0% {opacity: 0;
+            
+        }
+        
+        25% {
+            opacity: 0.25;
+        }
+        50% {
+            opacity: 0.5;
+        }
+        75% {
+            opacity: 0.75;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+    main:hover .music,main:hover .picture{
+        animation: player 2s 1  ;
+        opacity: 1;
+    }
+    .picture{
+        height: 50px;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        background-color: rgb(255, 255, 255);
+        width: 90%;
+        opacity: 0;
+        z-index: 99;
+        box-shadow: -5px -5px 7.5px#fff,
+                    5px 5px 7.5px rgba(0,0,0,0.1),
+                    inset -2.5px -2.5px 7.5px #fff,
+                    inset 2.5px 2.5px 7.5px rgba(0,0,0,0.1) ;
+        display: flex
+    }
+    /*下面是歌曲部分*/
+    #position{
+        position: relative;
+        bottom: 30px;
+    }
+    .scroll{
+        position: relative;
+        bottom: 20px;
+        width: 100vw;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        scroll-snap-type: y mandatory;
+        height: 500px;
+    }
+        
+    .sing{
+        display:flex;
+        width: 100vw;
+        flex-direction: column;
+        height: 500px;
+        scroll-snap-align: start;
+        position: relative;
+        
+        
+    }
+    .sing.div{
+        display: flex;
+    }
+    .sing span:first-of-type {
+        position: relative;
+        left: 0px;
+        bottom: 83px;
+        background-color:rgb(250, 251, 252);
+    }
+    .sing .material-icons{
+        position: relative;
+        left: 0px;
+        bottom: 78px;
+    }
+    #one,#two,#three,#four,#five,#six,#seven,#eight,#nine{
+        position: fixed;
+        bottom: 0px;
+        left: 0;
+        height: 50px;
+        width: 125px;
+        z-index: -100;
+    }
+    .songs-first1:hover #one{
+        z-index: 100;
+    }
+    .songs-first2:hover #two{
+        z-index: 100;
+    }
+    .songs-first3:hover #three{
+        z-index: 100;
+    }
+    .songs-second1:hover #four{
+        z-index: 100;
+    }
+    .songs-second2:hover #five{
+        z-index: 100;
+    }
+    .songs-second3:hover #six{
+        z-index: 100;
+    }
+    .songs-third1:hover #seven{
+        z-index: 100;
+    }
+    .songs-third2:hover #eight{
+        z-index: 100;
+    }
+    .songs-third3:hover #nine{
+        z-index: 100;
+    }
+    /*歌单自动滚动*/
+    #img-change{
+        overflow: hidden;
+        width: 150px;
+        height: 130px;
+           
+    }
+    #img-changing{
+        animation: imgrun 2s infinite 4s running;
+        list-style: none;
+    }
+    main li{
+       font-size: 0;
+    }
+    @keyframes imgrun{
+    0%{
+        transform: translateY(0px);
+    }
+    20% {
+        transform: translateY(0px);
+    }
+    25% {
+        transform: translateY(-26px);
+    }
+    35%{
+        transform: translateY(-52px);
+    }
+    45%{
+        transform: translateY(-78px);
+    }
+    55%{
+        transform: translateY(-104px);
+    }
+    65%{
+        transform: translateY(-130px);
+    }
+
+    100% {
+        transform: translateY(-130px);
+    
+}
+    }
+/*.recommendation:hover #img-chinging{
+    animation-play-state: paused;
+    cursor: pointer;
+}*/
